@@ -1,6 +1,6 @@
 {
   "name": "okf-docs",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
   "description": "Claude Code skill for converting a project's docs into the OKF (Open Knowledge Format) bundle format.",
   "license": "MIT",

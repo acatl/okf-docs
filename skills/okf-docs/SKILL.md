@@ -4,7 +4,7 @@ description: Convert a project's documentation layer into the OKF (Open Knowledg
 license: MIT
 metadata:
   author: acatl
-  version: "0.1.0" # x-release-please-version
+  version: "0.0.0" # x-release-please-version
 ---
 
 # okf-docs — generate + convert a doc layer into the OKF bundle
@@ -53,7 +53,7 @@ Name `SOURCES_OF_TRUTH[]` explicitly. **GATE: do not proceed until named.** Rule
 FOR each existing doc:
 
 - `cite` = a specific line/path in `SOURCES_OF_TRUTH` (code/spec) proving the claim's status.
-- `verdict ∈ {canonical | superseded-by-source | historical | diverged-misleading | dead}`.
+- `verdict ∈ {canonical-unique | superseded-by-source | historical | diverged-misleading | dead}` (the contract's VERDICT → DISPOSITION keys).
 - **GATE: a verdict without a `cite` is rejected.** Spot-check concrete claims (routes, columns, components, tools) against code.
 
 ## STAGE 4 — DESIGN BUNDLE

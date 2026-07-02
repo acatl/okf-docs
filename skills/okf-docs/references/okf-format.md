@@ -57,12 +57,12 @@ Replace `<BUNDLE_ROOT>` with the bundle dir. Append any other changed `.md` path
 
 ```bash
 # 1. lint (lockfile-pinned binary via the repo script) — add other changed .md after the glob
-npm run lint:md -- "<BUNDLE_ROOT>/*.md"
+npm run lint:md -- "<BUNDLE_ROOT>/**/*.md"
 # 2. links resolve (run from repo root)
 python3 - <<'PY'
 import re, os, glob
 EXTRA = []  # add other changed .md paths here, e.g. ["docs/index.md"]
-for f in glob.glob("<BUNDLE_ROOT>/*.md") + EXTRA:
+for f in glob.glob("<BUNDLE_ROOT>/**/*.md", recursive=True) + EXTRA:
     d = os.path.dirname(f)
     for m in re.finditer(r'\]\(([^)]+)\)', open(f, encoding="utf-8").read()):
         t = m.group(1).split('#')[0].split(' ')[0]

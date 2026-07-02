@@ -22,10 +22,10 @@ for f in "${skills[@]}"; do
   fm="$(awk 'NR==1 && $0=="---"{f=1;next} f && $0=="---"{exit} f{print}' "$f")"
 
   miss=()
-  grep -qE '^name:[[:space:]]*\S'        <<<"$fm" || miss+=("name")
-  grep -qE '^description:[[:space:]]*\S|^description:[[:space:]]*[>|]' <<<"$fm" || miss+=("description")
-  grep -qE '^[[:space:]]*author:[[:space:]]*\S' <<<"$fm" || miss+=("author")
-  grep -qE '^[[:space:]]*version:[[:space:]]*\S' <<<"$fm" || miss+=("version")
+  grep -qE '^name:[[:space:]]*[^[:space:]]'        <<<"$fm" || miss+=("name")
+  grep -qE '^description:[[:space:]]*[^[:space:]]|^description:[[:space:]]*[>|]' <<<"$fm" || miss+=("description")
+  grep -qE '^[[:space:]]*author:[[:space:]]*[^[:space:]]' <<<"$fm" || miss+=("author")
+  grep -qE '^[[:space:]]*version:[[:space:]]*[^[:space:]]' <<<"$fm" || miss+=("version")
 
   if [ ${#miss[@]} -gt 0 ]; then
     echo "✗ $f — missing frontmatter: ${miss[*]}" >&2

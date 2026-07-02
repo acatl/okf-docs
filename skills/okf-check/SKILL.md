@@ -4,7 +4,7 @@ description: Read-only health check for an OKF documentation bundle — reports 
 license: MIT
 metadata:
   author: acatl
-  version: "0.1.0" # x-release-please-version
+  version: "0.0.0" # x-release-please-version
 ---
 
 # okf-check — read-only OKF bundle health

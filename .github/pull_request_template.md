@@ -21,4 +21,4 @@ One-line bodies are defects on non-trivial changes.
 - [ ] Conventional Commit subject(s)
 - [ ] `npm run check` passes locally (markdown lint · spell · bundle drift · skill frontmatter)
 - [ ] Edited a canonical template/doc? Ran `scripts/sync-skill-resources.sh`
-- [ ] New skills carry `name` + `description` + `metadata.author`, breadcrumbs, and the `👉` block
+- [ ] New skills carry required frontmatter: `name`, `description`, `license`, `metadata.author`, `metadata.version` (CI: `scripts/check-skill-frontmatter.sh`)
