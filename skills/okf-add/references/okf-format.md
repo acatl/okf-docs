@@ -53,18 +53,22 @@ repo root — edit here, then `scripts/sync-skill-resources.sh` fans it into the
 
 ## VERIFY (commands)
 
+Replace `<BUNDLE_ROOT>` with the bundle dir. Append any other changed `.md` paths to `EXTRA`.
+
 ```bash
-# 1. lint (lockfile-pinned binary via the repo script)
-npm run lint:md -- "<BUNDLE_ROOT>/*.md" <other changed .md>
+# 1. lint (lockfile-pinned binary via the repo script) — add other changed .md after the glob
+npm run lint:md -- "<BUNDLE_ROOT>/*.md"
 # 2. links resolve (run from repo root)
 python3 - <<'PY'
-import re,os,glob
-for f in glob.glob("<BUNDLE_ROOT>/*.md")+[<other changed files>]:
-    d=os.path.dirname(f)
-    for m in re.finditer(r'\]\(([^)]+)\)', open(f,encoding="utf-8").read()):
-        t=m.group(1).split('#')[0].split(' ')[0]
-        if not t or t.startswith(('http','mailto:','~')): continue
-        assert os.path.exists(os.path.normpath(os.path.join(d,t))), f"BROKEN {f} -> {t}"
+import re, os, glob
+EXTRA = []  # add other changed .md paths here, e.g. ["docs/index.md"]
+for f in glob.glob("<BUNDLE_ROOT>/*.md") + EXTRA:
+    d = os.path.dirname(f)
+    for m in re.finditer(r'\]\(([^)]+)\)', open(f, encoding="utf-8").read()):
+        t = m.group(1).split('#')[0].split(' ')[0]
+        if not t or t.startswith(('http', 'mailto:', '~')):
+            continue
+        assert os.path.exists(os.path.normpath(os.path.join(d, t))), f"BROKEN {f} -> {t}"
 print("links OK")
 PY
 # 3. no dangling refs to removed files (ALL file types — configs/CI/source too, not just *.md)

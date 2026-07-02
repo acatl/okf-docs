@@ -16,7 +16,9 @@ consistent.
 - Skill bodies are **telegraphic** — structured, deduplicated, zero rhetoric, every decision-bearing
   datum kept.
 - Frontmatter `description` stays natural-language and trigger-rich (the router reads it).
-- Required frontmatter: `name`, `description`, and `metadata.author`. CI enforces this.
+- Required frontmatter: `name`, `description`, `metadata.author`, and `metadata.version`. CI enforces
+  all four (`scripts/check-skill-frontmatter.sh`). `metadata.version` is release-managed — carry the
+  `# x-release-please-version` marker and let release-please bump it.
 
 ## Bundled resources (drift guard)
 

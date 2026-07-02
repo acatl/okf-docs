@@ -29,7 +29,7 @@ MAP=(
 mode="${1:-sync}"
 drift=0
 
-for pair in ${MAP[@]+"${MAP[@]}"}; do
+for pair in "${MAP[@]}"; do
   src="${pair%%::*}"
   dst="${pair##*::}"
   [ -f "$src" ] || { echo "⛔ canonical missing: $src" >&2; exit 2; }
