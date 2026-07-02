@@ -1,8 +1,9 @@
 # OKF format — the shared contract
 
 The single source of truth for what an OKF bundle *is*. Every `okf-*` skill reads this (bundled as
-`references/okf-format.md`); the governance rule template restates its user-facing half. Canonical at
-repo root — edit here, then `scripts/sync-skill-resources.sh` fans it into the skill bundles.
+`references/okf-format.md`); the governance rule template restates its user-facing half. The canonical
+file is `docs/okf-format.md` (repo root) — edit that, then `scripts/sync-skill-resources.sh` fans it
+into the skill bundles (the `references/` copies are generated, never hand-edited).
 
 ## Bundle
 
@@ -76,6 +77,8 @@ print("links OK")
 PY
 # 3. no dangling refs to removed files (ALL file types — configs/CI/source too, not just *.md).
 #    FAILS with exit 1 if any live reference to a removed doc remains (this is a gate).
+#    `worktrees` / `changes/archive` are EXAMPLE immutable/generated paths to skip — swap in the
+#    target project's own (archive provenance is handled upstream, not by this final gate).
 hits=$(grep -rFn -- "<removed-basename>" . --exclude-dir={node_modules,dist,.nx,.git} | grep -v worktrees | grep -v changes/archive) || true
 if [ -n "$hits" ]; then printf 'DANGLING refs remain:\n%s\n' "$hits"; exit 1; fi
 echo "clean"
