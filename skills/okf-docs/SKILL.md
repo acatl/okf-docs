@@ -78,7 +78,7 @@ Per non-canonical doc, apply DISPOSITION. **Blocking preconditions before any de
 
 ## STAGE 7 — VERIFY (gate G5)
 
-Run VERIFY. **GATE: all three pass** (lint clean, links resolve, zero dangling refs) or fix and re-run.
+Run VERIFY. **GATE: links resolve + zero dangling refs** (the self-contained checks) — plus markdown lint clean *if the target project lints Markdown*. Fix and re-run until green.
 
 ## STAGE 8 — GOVERNANCE
 

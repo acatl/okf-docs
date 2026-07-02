@@ -53,11 +53,14 @@ repo root — edit here, then `scripts/sync-skill-resources.sh` fans it into the
 
 ## VERIFY (commands)
 
-Replace `<BUNDLE_ROOT>` with the bundle dir. Append any other changed `.md` paths to `EXTRA`.
+Steps 2–3 are **self-contained** (`python3` + `grep`, no repo-specific tooling) and are the **hard gate** — they run in any target project. Step 1 (markdown lint) is optional and project-detected: these skills are stack-agnostic, so never assume this repo's npm scripts exist in the consuming project. Replace `<BUNDLE_ROOT>` with the bundle dir; append any other changed `.md` paths to `EXTRA`.
 
 ```bash
-# 1. lint (lockfile-pinned binary via the repo script) — add other changed .md after the glob
-npm run lint:md -- "<BUNDLE_ROOT>/**/*.md"
+# 1. markdown lint — OPTIONAL, project-detected. Run the TARGET project's own
+#    markdown linter if it has one, e.g.:
+#      npm run lint:md -- "<BUNDLE_ROOT>/**/*.md"     (if the project defines it)
+#      npx markdownlint-cli2 "<BUNDLE_ROOT>/**/*.md"  (if node is available)
+#    Skip entirely when the project doesn't lint Markdown — steps 2-3 are the gate.
 # 2. links resolve (run from repo root)
 python3 - <<'PY'
 import re, os, glob

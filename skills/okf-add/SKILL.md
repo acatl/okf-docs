@@ -65,10 +65,11 @@ updates. Applies the shared contract [`references/okf-format.md`](references/okf
 ## STAGE 5 — VERIFY (gate G3)
 
 Run VERIFY (from [`references/okf-format.md`](references/okf-format.md)) scoped to the **touched
-files** (the concept + `index.md`): lint clean + links resolve. Fix and re-run until green.
+files** (the concept + `index.md`): links resolve (self-contained) + markdown lint clean if the
+target project lints Markdown. Fix and re-run until green.
 
 ## DONE
 
-The concept exists/updated in `BUNDLE_ROOT`, `index.md` links it, touched files lint clean and links
-resolve. On first run: bundle + `index.md` + governance rule created. Report: concept path (new or
+The concept exists/updated in `BUNDLE_ROOT`, `index.md` links it, touched files' links resolve (and
+lint clean if the project lints Markdown). On first run: bundle + `index.md` + governance rule created. Report: concept path (new or
 updated), claims labeled `sourced`/`inferred`, index change, whether the bundle was initialized.
