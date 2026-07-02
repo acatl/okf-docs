@@ -74,6 +74,9 @@ for f in glob.glob("<BUNDLE_ROOT>/**/*.md", recursive=True) + EXTRA:
         assert os.path.exists(os.path.normpath(os.path.join(d, t))), f"BROKEN {f} -> {t}"
 print("links OK")
 PY
-# 3. no dangling refs to removed files (ALL file types — configs/CI/source too, not just *.md)
-grep -rn "<removed-basename>" . --exclude-dir={node_modules,dist,.nx,.git} | grep -v worktrees | grep -v changes/archive || echo "clean"
+# 3. no dangling refs to removed files (ALL file types — configs/CI/source too, not just *.md).
+#    FAILS with exit 1 if any live reference to a removed doc remains (this is a gate).
+hits=$(grep -rn "<removed-basename>" . --exclude-dir={node_modules,dist,.nx,.git} | grep -v worktrees | grep -v changes/archive) || true
+if [ -n "$hits" ]; then printf 'DANGLING refs remain:\n%s\n' "$hits"; exit 1; fi
+echo "clean"
 ```
