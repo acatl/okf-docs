@@ -70,7 +70,7 @@ for f in glob.glob("<BUNDLE_ROOT>/**/*.md", recursive=True) + EXTRA:
     d = os.path.dirname(f)
     for m in re.finditer(r'\]\(([^)]+)\)', open(f, encoding="utf-8").read()):
         t = m.group(1).split('#')[0].split(' ')[0]
-        if not t or t.startswith(('http', 'mailto:', '~')):
+        if not t or t.startswith(('http://', 'https://', 'mailto:', '~')):
             continue
         assert os.path.exists(os.path.normpath(os.path.join(d, t))), f"BROKEN {f} -> {t}"
 print("links OK")
