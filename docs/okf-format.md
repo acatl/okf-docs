@@ -79,7 +79,7 @@ PY
 #    FAILS with exit 1 if any live reference to a removed doc remains (this is a gate).
 #    `worktrees` / `changes/archive` are EXAMPLE immutable/generated paths to skip — swap in the
 #    target project's own (archive provenance is handled upstream, not by this final gate).
-hits=$(grep -rFn -- "<removed-basename>" . --exclude-dir={node_modules,dist,.nx,.git} | grep -v worktrees | grep -v changes/archive) || true
+hits=$(grep -rFn --exclude-dir={node_modules,dist,.nx,.git} -- "<removed-basename>" . | grep -v worktrees | grep -v changes/archive) || true
 if [ -n "$hits" ]; then printf 'DANGLING refs remain:\n%s\n' "$hits"; exit 1; fi
 echo "clean"
 ```

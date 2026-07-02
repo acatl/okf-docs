@@ -67,8 +67,9 @@ updates. Applies the shared contract [`references/okf-format.md`](references/okf
 ## STAGE 5 — VERIFY (gate G3)
 
 Run VERIFY (from [`references/okf-format.md`](references/okf-format.md)) scoped to the **touched
-files** (the concept + `index.md`): links resolve (self-contained) + markdown lint clean if the
-target project lints Markdown. Fix and re-run until green.
+files** (the concept + `index.md`, plus `.claude/rules/okf-docs.md` whenever STAGE 0 created or
+merged it — a bad `paths:` merge or malformed rule YAML must not slip through): links resolve
+(self-contained) + markdown lint clean if the target project lints Markdown. Fix and re-run until green.
 
 ## DONE
 

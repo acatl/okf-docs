@@ -9,6 +9,7 @@ consistent.
 - **Conventional Commits only** (`feat:` / `fix:` / `docs:` / `chore:` / `refactor:` / `test:` /
   `style:` / `ci:`). A non-conforming subject is a defect — enforced by a husky `commit-msg` hook
   running commitlint (`commitlint.config.cjs`); `npm install` wires it up via the `prepare` script.
+  End co-authored (e.g. AI-assisted) commit messages with a `Co-Authored-By:` trailer.
 - **Never commit to `main`.** Work on a branch; land via a squashed PR to `main`.
 
 ## Authoring skills
