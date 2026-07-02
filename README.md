@@ -49,7 +49,7 @@ invocation.
 
 ```text
 README.md
-docs/okf-format.md        canonical OKF format contract (all skills read it)
+docs/okf-format.md        canonical OKF format contract (synced into each skill bundle)
 templates/                canonical governance-rule template (okf-add / okf-docs emit it)
 skills/okf-*/             the three skills (SKILL.md + synced references/ · templates/)
 scripts/                  sync-skill-resources.sh (bundle drift guard) + skill-frontmatter check

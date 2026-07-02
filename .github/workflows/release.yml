@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
 
+# Restrictive default for the workflow; the release-please job elevates its own.
+permissions:
+  contents: read
+
 concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: false

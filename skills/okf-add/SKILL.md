@@ -28,10 +28,12 @@ updates. Applies the shared contract [`references/okf-format.md`](references/okf
 
 - If `BUNDLE_ROOT/index.md` exists → this is the bundle; read `index.md` + list concept files.
 - If it does NOT exist → **INIT:** create `BUNDLE_ROOT/`, write `index.md` (frontmatter ONLY
-  `okf_version: "0.1"`), and emit the governance rule from
-  [`templates/okf-docs.rule.md`](templates/okf-docs.rule.md) to the project's rule location (Claude
-  Code: `.claude/rules/okf-docs.md`), filling its `paths:` with `BUNDLE_ROOT/**/*.md`. **GATE: do not
-  author a concept until the bundle + index exist.**
+  `okf_version: "0.1"`), and install the governance rule at the project's rule location (Claude
+  Code: `.claude/rules/okf-docs.md`). **If the rule already exists** (the project has other bundles):
+  read it and **append `BUNDLE_ROOT/**/*.md` to its `paths:` if missing — never overwrite the list**,
+  preserving existing bundle roots. **Else** create it from
+  [`templates/okf-docs.rule.md`](templates/okf-docs.rule.md) with `paths:` = `BUNDLE_ROOT/**/*.md`.
+  **GATE: do not author a concept until the bundle + index exist.**
 
 ## STAGE 1 — RESOLVE HOME (gate G2 — one home per fact)
 
