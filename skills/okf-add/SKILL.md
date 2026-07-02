@@ -1,6 +1,6 @@
 ---
 name: okf-add
-description: Add or update ONE concept in an existing OKF documentation bundle — the incremental, as-you-write path (not a bulk migration). Use when asked to "document this", "add a doc", "write this up as a concept", "capture this decision", "add to the product/architecture bundle", or to record a single new fact in OKF format. Non-destructive: only creates or updates concept files and the index; never deletes. Creates the bundle (index + governance rule) on first run. For converting a pile of existing docs, use okf-docs instead.
+description: Add or update ONE concept in an existing OKF documentation bundle — the incremental, as-you-write path (not a bulk migration). Use when asked to "document this", "add a doc", "write this up as a concept", "capture this decision", "add to the product/architecture bundle", or to record a single new fact in OKF format. Non-destructive — only creates or updates concept files and the index, never deletes. Creates the bundle (index + governance rule) on first run. For converting a pile of existing docs, use okf-docs instead.
 license: MIT
 metadata:
   author: acatl
