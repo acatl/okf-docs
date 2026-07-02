@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Validate that every skill carries the required frontmatter: name, description,
-# an author, and a version. Keeps the skill catalog uniform (and authored) for
+# license, an author, and a version. Keeps the skill catalog uniform (and authored) for
 # sharing / vercel-labs/skills consumption; the version is release-managed
 # (release-please stamps it, so a new skill must ship the field). Exit 1 on any
 # violation.
@@ -24,6 +24,7 @@ for f in "${skills[@]}"; do
   miss=()
   grep -qE '^name:[[:space:]]*[^[:space:]]'        <<<"$fm" || miss+=("name")
   grep -qE '^description:[[:space:]]*[^[:space:]]|^description:[[:space:]]*[>|]' <<<"$fm" || miss+=("description")
+  grep -qE '^license:[[:space:]]*[^[:space:]]'   <<<"$fm" || miss+=("license")
   grep -qE '^[[:space:]]*author:[[:space:]]*[^[:space:]]' <<<"$fm" || miss+=("author")
   grep -qE '^[[:space:]]*version:[[:space:]]*[^[:space:]]' <<<"$fm" || miss+=("version")
 
@@ -34,6 +35,6 @@ for f in "${skills[@]}"; do
 done
 
 if [ "$fail" -eq 0 ]; then
-  echo "✓ all ${#skills[@]} skills have name + description + author + version"
+  echo "✓ all ${#skills[@]} skills have name + description + license + author + version"
 fi
 exit "$fail"
