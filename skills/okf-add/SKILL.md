@@ -4,7 +4,7 @@ description: Add or update ONE concept in an existing OKF documentation bundle â
 license: MIT
 metadata:
   author: acatl
-  version: "0.0.0" # x-release-please-version
+  version: "1.0.0" # x-release-please-version
 ---
 
 # okf-add â€” add or update one concept in an OKF bundle

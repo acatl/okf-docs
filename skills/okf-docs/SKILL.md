@@ -4,7 +4,7 @@ description: Convert a project's documentation layer into the OKF (Open Knowledg
 license: MIT
 metadata:
   author: acatl
-  version: "0.0.0" # x-release-please-version
+  version: "1.0.0" # x-release-please-version
 ---
 
 # okf-docs — generate + convert a doc layer into the OKF bundle
