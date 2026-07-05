@@ -1,0 +1,45 @@
+# Project dictionary for cspell — domain terms, names, and tool/identifier words
+# that are correct in this repo but absent from the base dictionaries.
+
+# People / org
+Acatl
+Pacheco
+
+# Core domain
+OKF
+frontmatter
+namespace
+namespaced
+breadcrumb
+breadcrumbs
+telegraphic
+
+# OSS tooling
+markdownlint
+cspell
+lychee
+codespell
+commitlint
+husky
+Vercel
+vercel
+npx
+devDependencies
+editorconfig
+gitignore
+jsonc
+YAML
+JSONL
+jsonl
+
+# Coined / jargon
+dedup
+greppable
+roadmap
+scaffolded
+scaffolding
+walkthrough
+genericize
+genericized
+repoint
+repointed
